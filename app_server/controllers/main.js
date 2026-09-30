@@ -1,8 +1,8 @@
-/* GET home page */
-const index = function(req, res){
-    res.render('index', { title: 'Work Experience Application Tracker' });
+/* GET Landing page */
+const landing = function(req, res){
+    res.render('landing', { title: 'Work Experience Application Tracker' });
 };
 
 module.exports = {
-    index
+    landing
 };

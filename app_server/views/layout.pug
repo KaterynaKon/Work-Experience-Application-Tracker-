@@ -7,5 +7,32 @@ html
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    nav.navbar.navbar-fixed-top.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbarMain')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/dashboard') Work Experience Tracker
+        #navbarMain.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/dashboard') Dashboard
+            li
+              a(href='/applications') Applications
+            li
+              a(href='/companies') Companies
+            li
+              a(href='/cvs') CVs
+            li
+              a.logout-btn(href='/logout') Logout
+    .container
+      block content
+      footer
+        .row
+          .col-12
+            small &copy; Work Experience Tracker 2027
+    script(src='https://code.jquery.com/jquery-3.1.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js')
     script(src='/javascripts/bootstrap.min.js')
