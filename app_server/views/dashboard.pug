@@ -3,7 +3,7 @@ extends layout
 block content
     .row.banner
         .col-12
-            h1 My Applications
+            h1=pageHeader.title
     .row
         .col-12
             table.table.table-striped
@@ -16,27 +16,12 @@ block content
                         th Date Applied
                         th CV Used
                 tbody
-                    tr
-                        td Company A
-                        td Software Intern
-                        td Work Experience
-                        td
-                            span.status-applied Applied
-                        td 16 Sep
-                        td Backend Developer CV
-                    tr
-                        td Company B
-                        td Developer Intern
-                        td Internship
-                        td
-                            span.status-interview Interview
-                        td 14 Sep
-                        td General CV
-                    tr
-                        td Company C
-                        td IT Work Experience
-                        td Work Experience
-                        td
-                            span.status-applied Applied
-                        td 12 Sep
-                        td Backend Developer CV
+                    each application in applications
+                        tr
+                            td=application.company
+                            td=application.position
+                            td=application.type
+                            td 
+                                span(class='status-'+application.status.toLowerCase())=application.status
+                            td=application.dateApplied
+                            td=application.cvUsed
