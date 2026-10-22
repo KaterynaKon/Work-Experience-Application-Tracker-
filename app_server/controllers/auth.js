@@ -8,6 +8,10 @@ const login = function(req, res){
         });
 };
 
+const loginPost = function(req, res){
+    res.send('Login POST - TODO');
+}
+
 
 /* GET register page */
 const register = function(req, res){
@@ -19,7 +23,13 @@ const register = function(req, res){
     });
 };
 
+const registerPost = function(req, res){
+    res.send('Register POST - TODO');
+}
+
 module.exports = {
     login,
-    register
+    register,
+    loginPost,
+    registerPost
 };

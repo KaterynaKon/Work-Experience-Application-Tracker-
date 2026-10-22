@@ -10,7 +10,9 @@ router.get('/', ctrlMain.landing);
 
 /* Auth pages */
 router.get('/login', ctrlAuth.login);
+router.post('/login', ctrlAuth.loginPost);
 router.get('/register', ctrlAuth.register);
+router.post('/register', ctrlAuth.registerPost);
 
 /* Dashboard */
 router.get('/dashboard', ctrlDashboard.index);
