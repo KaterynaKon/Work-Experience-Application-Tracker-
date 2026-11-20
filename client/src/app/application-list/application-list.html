@@ -1,18 +1,25 @@
-<h2>My Applications</h2>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Company</th>
-      <th>Position</th>
-      <th>Status</th>
+    <th>Company</th>
+    <th>Position</th>
+    <th>Type</th>
+    <th>Status</th>
+    <th>Date Applied</th>
+    <th>CV Used</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Example Company</td>
-      <td>Software Intern</td>
-      <td>Applied</td>
-    </tr>
+    @for (application of applications; track application._id) {
+      <tr>
+        <td>{{ application.company }}</td>
+        <td>{{ application.position }}</td>
+          <td>{{ application.type }}</td>
+          <td>{{ application.status }}</td>
+          <td>{{ application.dateApplied | applicationDate }}</td>
+          <td>{{ application.cvUsed }}</td>
+      </tr>
+    }
   </tbody>
 </table>

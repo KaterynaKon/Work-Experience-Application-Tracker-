@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -8,7 +9,6 @@ require('./app_api/models/db');
 
 const apiRoutes = require('./app_api/routes/index');
 const indexRouter = require('./app_server/routes/index');
-
 
 const app = express();
 
@@ -21,7 +21,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app_public')));
 
+app.use('/api', cors({
+  origin: 'http://localhost:4200'
+}));
 app.use('/api', apiRoutes);
 app.use('/', indexRouter);
 

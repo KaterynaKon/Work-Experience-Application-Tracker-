@@ -1,12 +1,13 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WorktrackerData, Application } from '../worktracker-data';
+import { ApplicationDatePipe } from '../application-date-pipe';
 
 
 @Component({
   selector: 'app-application-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ApplicationDatePipe],
   templateUrl: './application-list.html',
   styleUrl: './application-list.css'
 })
@@ -26,7 +27,7 @@ export class ApplicationList implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getApplications();
+   this.getApplications();
   }
 }
 

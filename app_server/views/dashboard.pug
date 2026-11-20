@@ -6,22 +6,7 @@ block content
             h1=pageHeader.title
     .row
         .col-12
-            table.table.table-striped
-                thead
-                    tr
-                        th Company
-                        th Position
-                        th Type
-                        th Status
-                        th Date Applied
-                        th CV Used
-                tbody
-                    each application in applications
-                        tr
-                            td=application.company
-                            td=application.position
-                            td=application.type
-                            td 
-                                span(class='status-'+application.status.toLowerCase())=application.status
-                            td=application.dateApplied
-                            td=application.cvUsed
+            app-application-list Loading...
+
+block scripts
+    script(type='module', src='/build/main-2HD7DKXB.js')
