@@ -1,34 +1,34 @@
 /* GET dashboard page */
+const request = require('request');
+const apiOptions ={
+    server:'http://localhost:3000'
+};
+
+const _renderDashboard = function(req, res, applications){
+    res.render('dashboard', {
+        title: 'Dashboard',
+        pageHeader: {title: 'My Applications'},
+        applications: applications
+    });
+};
 
 const index = function(req, res){
-    res.render('dashboard', { 
-        title: 'Dashboard',
-        pageHeader: { title: 'My Applications'},
-        applications: [{
-            company: 'Company A',
-            position: 'Software Intern',
-            type: 'Work Experience',
-            status: 'Applied',
-            dateApplied: '16 Sep',
-            cvUsed: 'Backend Developer CV'
-        },{
-            company: 'Company B',
-            position: 'Developer Intern',
-            type: 'Internship',
-            status: 'Interview',
-            dateApplied: '14 Sep',
-            cvUsed: 'General CV'
-        },{
-            company: 'Company C',
-            position: 'IT Work Experience',
-            type: 'Work Experience',
-            status: 'Applied',
-            dateApplied: '12 Sep',
-            cvUsed: 'Backend Developer CV'
-        }]
-    
-    
+    const requestOptions = {
+        url: apiOptions.server + '/api/applications',
+        method: 'GET',
+        json: true
+    };
+
+    request(requestOptions, (err, response, body) =>{
+        let applications = [];
+        if(!err && response.statusCode ===200 && Array.isArray(body)){
+            applications = body;
+        }else{
+            console.log('API error or non-array body: ', body);
+        }
+        _renderDashboard(req, res, applications);
     });
+    
 };
 
 module.exports = { index };
